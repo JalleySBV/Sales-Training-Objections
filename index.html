@@ -78,7 +78,7 @@
                 <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
                     <span class="response-heading text-green-600">Response Options:</span>
                     <div class="response-item">
-                        **Option A (Assumptive Close):** That is exactly what you should be doing! I'm [Insert Name], [Insert Title]. So I can make sure you're focused on the right vehicles, what specifically caught your eye today? Are you leaning toward something specific?
+                        **Option A (Assumptive Close):** That is exactly what you should be doing! I'm [Insert Name], the [Insert Title]. So I can make sure you're focused on the right vehicles, what specifically caught your eye today? Are you leaning toward something specific?
                     </div>
                     <div class="response-item">
                         **Option B (Two-Minute Rule):** I understand. If I could save you some time and show you the two vehicles that best match your criteria, would that be worth two minutes of your time?
@@ -102,6 +102,26 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Card 15: Proactive Inoculation (NEW) -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-indigo-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-indigo-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection/Situation:</p>
+                    <p class="text-2xl italic text-red-600">Customer gives no clear objection (The Silent Sticking Point)</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response (Proactive Inoculation):</span>
+                    <div class="response-item">
+                        **Option A (Pre-empt Financing Fears):** Sometimes we find customers are holding back because they think they've run into a financial hurdle. As a dealership, we often have ways to help overcome those hurdles. For example:
+                        <ul class="list-disc list-inside mt-3 space-y-2 pl-4">
+                            <li>**First Payment:** Good news, most lenders will let us **push your first payment out 45-60 days**! That means you won't owe your current payment (we pay off that loan), and you get 1 to 2 full months before your new payment is due.</li>
+                            <li>**Down Payment:** Concerned about not having the money today? We can often have you sign a **Promissory Note**, giving you **X days to gather the money** and bring it back to us. You can shop today as if you have all the down payment ready!</li>
+                        </ul>
+                        Knowing that, what is the next step that makes the most sense for you?
+                    </div>
+                </div>
+            </div>
+
 
             <!-- Card 14: Comparing Other Brands (NEW) -->
             <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
@@ -345,4 +365,3 @@
     </script>
 </body>
 </html>
-
