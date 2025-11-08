@@ -20,6 +20,21 @@
         /* Transition for smooth reveal */
         .response-content {
             transition: all 0.3s ease-in-out;
+            white-space: pre-wrap; /* Preserve formatting for multiple responses */
+        }
+        .response-heading {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 700; /* font-bold */
+            color: #10B981; /* green-500 */
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .response-item {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-left: 3px solid #6366F1; /* indigo-500 */
+            background-color: #EEF2FF; /* indigo-50 */
+            border-radius: 0.5rem;
         }
     </style>
 </head>
@@ -27,36 +42,25 @@
 
     <header class="text-center mb-10">
         <h1 class="text-4xl md:text-5xl font-extrabold text-blue-800">Objection Mastery Training</h1>
-        <p class="text-lg text-gray-600 mt-2">Click any card to reveal the recommended professional response.</p>
+        <p class="text-lg text-gray-600 mt-2">Click any card to reveal the recommended professional response(s).</p>
     </header>
 
     <main class="max-w-4xl mx-auto">
         
-        <!-- Sales Role-Play Simulator Section -->
+        <!-- Sales Role-Play Simulator Section - Now includes a message about the block -->
         <section class="mb-12 p-8 bg-white rounded-xl card-shadow border-t-4 border-purple-500">
             <h2 class="text-3xl font-bold text-purple-700 mb-6 flex items-center">
-                Sales Role-Play Simulator ✨
+                Sales Role-Play Simulator (Currently Offline) 🚫
             </h2>
-            <p class="text-gray-600 mb-4">Practice handling unexpected situations. Describe the customer scenario below (e.g., "Customer is stuck on the trade-in price and just got a low offer from CarMax").</p>
-
-            <textarea id="scenario-input" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500 mb-4 h-24" placeholder="Enter your customer scenario here..."></textarea>
-            
-            <button onclick="generateCustomerResponse()" id="generate-btn" class="w-full bg-purple-600 text-white font-semibold py-3 rounded-lg hover:bg-purple-700 transition duration-150 ease-in-out">
-                Generate Customer Response ✨
+            <p class="text-gray-600 mb-4">
+                *The AI simulator is currently blocked by network security/firewalls on this connection. Please use the static cards below for training.*
+            </p>
+            <button class="w-full bg-gray-400 text-white font-semibold py-3 rounded-lg cursor-not-allowed">
+                Generate Customer Response (Unavailable)
             </button>
-
-            <div id="loading-indicator" class="text-center mt-4 text-purple-600 hidden">
-                <svg class="animate-spin h-5 w-5 mr-3 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                Generating realistic customer response...
-            </div>
-
-            <div id="response-output" class="mt-6 p-4 bg-purple-50 border-l-4 border-purple-400 rounded-lg text-gray-800 hidden">
-                <p class="font-bold mb-2 text-purple-800">Customer Dialogue (Generated):</p>
-                <p id="generated-text"></p>
-            </div>
         </section>
 
-        <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center border-b-2 pb-3">Standard Objection Cards</h2>
+        <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center border-b-2 pb-3">Master Objection Cards</h2>
 
         <div id="flashcard-container" class="space-y-6">
 
@@ -67,68 +71,98 @@
                     <p class="text-2xl italic text-red-600">"I'm just looking/browsing."</p>
                 </div>
                 <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
-                    <p class="text-xl font-bold text-green-600 mb-2">Response:</p>
-                    <p class="text-lg text-gray-700">That is exactly what you should be doing! I'm [Insert Name], the [Insert Title]. So I can make sure you're focused on the right vehicles, what specifically caught your eye today? Are you leaning toward something specific, like an SUV or a sedan?</p>
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Assumptive Close):** That is exactly what you should be doing! I'm [Insert Name], the [Insert Title]. So I can make sure you're focused on the right vehicles, what specifically caught your eye today? Are you leaning toward something specific?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Two-Minute Rule):** I understand. If I could save you some time and show you the two vehicles that best match your criteria, would that be worth two minutes of your time?
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 2: Low Commitment -->
-            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
-                <div class="card-front">
-                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
-                    <p class="text-2xl italic text-red-600">"I'm just here to kill time."</p>
-                </div>
-                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
-                    <p class="text-xl font-bold text-green-600 mb-2">Response:</p>
-                    <p class="text-lg text-gray-700">That's great! We have a few new models that are definitely worth a few minutes of your time. If I could quickly show you the two or three most popular vehicles in your price range, would that be a good use of your time?</p>
-                </div>
-            </div>
-
-            <!-- Card 3: Avoiding Commitment -->
+            <!-- Card 2: Avoiding Commitment -->
             <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
                 <div class="card-front">
                     <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
                     <p class="text-2xl italic text-red-600">"I'm not buying anything today."</p>
                 </div>
                 <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
-                    <p class="text-xl font-bold text-green-600 mb-2">Response:</p>
-                    <p class="text-lg text-gray-700">I completely understand; that's fine. We don't expect you to buy today, but we do hope you'll leave today with all the information you need to make the best decision for your family. What kind of information are you hoping to gather on this visit?</p>
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Information Focus):** I completely understand. We don't expect you to buy today, but we do hope you'll leave with all the information you need. What kind of information—price, trade value, or specs—are you hoping to gather on this visit?
+                    </div>
+                    <div class="response-item">
+                        **Option B (The Decision Close):** That's fine. If we happen to find the perfect vehicle at a payment you love, would you still decide not to take it just because of the day of the week?
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 4: Waiting for Authority -->
+            <!-- Card 3: Waiting for Authority -->
             <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
                 <div class="card-front">
                     <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
-                    <p class="text-2xl italic text-red-600">"I’m waiting for a friend/partner."</p>
+                    <p class="text-2xl italic text-red-600">"I need to talk to my spouse/wife/partner."</p>
                 </div>
                 <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
-                    <p class="text-xl font-bold text-green-600 mb-2">Response:</p>
-                    <p class="text-lg text-gray-700">Perfect. While you wait, I can quickly pull up a complimentary market report on your current vehicle. It'll just take two minutes, and then you'll know exactly what your trade-in is worth when your friend arrives.</p>
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Anticipate Concerns):** That is 100% fair. If your spouse were here right now, what question do you think they would ask that I haven't answered yet about the car or the payment?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Trial Close):** I respect that. Since you love the car, let's complete the paperwork up to the decision point, and I'll even call them on speakerphone right now. If they say yes, you're all set!
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 5: Payment Focus -->
-            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
-                <div class="card-front">
-                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
-                    <p class="text-2xl italic text-red-600">"I need a lower monthly payment."</p>
-                </div>
-                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
-                    <p class="text-xl font-bold text-green-600 mb-2">Response:</p>
-                    <p class="text-lg text-gray-700">I understand. The price is based on the vehicle and all the value we provide. Is the payment the only thing keeping you from moving forward right now? If we could get the payment to a comfortable spot, is this the car you would drive home in today? (Focus on the gap, not the full price.)</p>
-                </div>
-            </div>
-
-            <!-- Card 6: Price Resistance -->
+            <!-- Card 4: Price Resistance -->
             <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
                 <div class="card-front">
                     <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
                     <p class="text-2xl italic text-red-600">"That's too much money/The price is too high."</p>
                 </div>
                 <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
-                    <p class="text-xl font-bold text-green-600 mb-2">Response:</p>
-                    <p class="text-lg text-gray-700">I agree, it’s a significant investment, and that’s why you’re getting such a quality vehicle. Compared to other dealerships, where did you see the largest difference in value that makes you feel this one is too high? (Isolate the perceived issue, not the vehicle itself.)</p>
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Isolate the Issue):** I agree, it’s a significant investment. Aside from the price, is this the exact vehicle you want? (If yes, focus on justifying value/payment.)
+                    </div>
+                    <div class="response-item">
+                        **Option B (Value Justification):** You’re absolutely right, and that’s why you’re getting such a quality vehicle that includes [Mention Warranty/Service/Detailing]. Are you comparing our total value or just the upfront dollar amount?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Shopping Competition -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
+                    <p class="text-2xl italic text-red-600">"I can get the same car cheaper somewhere else."</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Apples-to-Apples):** I appreciate you doing your research. Are you looking at the **exact same car**—the same trim, mileage, and condition, along with the same warranty and service benefits we include? If the only difference is the price, I'm confident we can bridge that gap.
+                    </div>
+                    <div class="response-item">
+                        **Option B (Ask for Proof):** I respect that. To ensure you're getting the best deal, can you show me the buyer’s order or the window sticker? If we can verify it, we guarantee we’ll beat it, provided the vehicles are identical.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 6: Trade-in Price -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
+                    <p class="text-2xl italic text-red-600">"Your trade-in offer is too low."</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Market Data):** I understand. Our offer is based on live wholesale market data, and that price accounts for the [Damage/Tires/Mileage] we discussed. What number did you have in mind that you feel is fair based on the condition?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Total Investment Focus):** I get it, but let's shift focus from your trade to your total investment. If we can get your monthly payment exactly where you want it, are you comfortable letting us handle the trade?
+                    </div>
                 </div>
             </div>
 
@@ -139,70 +173,121 @@
                     <p class="text-2xl italic text-red-600">"I want your best price right now."</p>
                 </div>
                 <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
-                    <p class="text-xl font-bold text-green-600 mb-2">Response:</p>
-                    <p class="text-lg text-gray-700">Absolutely. Our best price is based on two things: first, the inventory levels—and this model is in high demand—and second, your decision to take it home right now. If I show you the best price we can possibly do, are you prepared to take the vehicle home today?</p>
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Trial Close):** Absolutely. Our best price is based on two things: current inventory and your decision to take it home right now. If I show you the best price we can possibly do, are you prepared to take the vehicle home today?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Management Close):** I will get the absolute lowest price approved by my manager right now. If it meets your expectation, is there anything at all that would stop you from moving forward?
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 8: Shopping Competition -->
-            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
-                <div class="card-front">
-                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
-                    <p class="text-2xl italic text-red-600">"I can get the same car cheaper somewhere else."</p>
-                </div>
-                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
-                    <p class="text-xl font-bold text-green-600 mb-2">Response:</p>
-                    <p class="text-lg text-gray-700">I appreciate you doing your research. Are you looking at the exact same vehicle—the same model, year, trim, mileage, and condition, along with the same warranty and service benefits we include? If the only difference is the price, I'm confident we can bridge that gap and keep your business here.</p>
-                </div>
-            </div>
-
-            <!-- Card 9: The "Think About It" -->
+            <!-- Card 8: The "Think About It" -->
             <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
                 <div class="card-front">
                     <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
                     <p class="text-2xl italic text-red-600">"I need to think about it."</p>
                 </div>
                 <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
-                    <p class="text-xl font-bold text-green-600 mb-2">Response:</p>
-                    <p class="text-lg text-gray-700">I respect that this is a big decision, and thinking about it is important. But in my experience, when someone needs time to 'think about it,' it's usually because I failed to answer one final question. What are the top one or two things you need to think through? (Look for the real objection.)</p>
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Isolate the Hidden Objection):** I respect that. When someone needs time to 'think about it,' it's usually because I failed to answer one final question. What are the top one or two things you need to think through—the car, the payment, or the trade value?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Negative Reverse):** I understand. You wouldn't be leaving if you didn't have some concern. If you went home and the dealership called you tomorrow saying the car was sold, how would you feel? (Gauge emotional commitment.)
+                    </div>
+                    <div class="response-item">
+                        **Option C (Two Major Obstacles):** Most of our clients that need to think about it, it usually comes down to one of two things: either **the vehicle is not quite right** (it’s missing something you wish it had), or **it's about the money**. Which one is it for you?
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 10: Authority Closing -->
+            <!-- Card 9: Waiting for a Deal -->
             <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
                 <div class="card-front">
                     <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
-                    <p class="text-2xl italic text-red-600">"I need to talk to my spouse/wife/partner."</p>
+                    <p class="text-2xl italic text-red-600">"I want to wait for a better deal/next month's incentives."</p>
                 </div>
                 <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
-                    <p class="text-xl font-bold text-green-600 mb-2">Response:</p>
-                    <p class="text-lg text-gray-700">That is 100% fair, and a great decision is one you make together. If your spouse were here right now, what question do you think they would ask that I haven't answered yet? (Pre-close by anticipating the partner’s concerns.)</p>
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Cost of Waiting):** That's a valid strategy, but waiting comes with a cost. If you wait, you risk losing this specific vehicle, and you're adding another month of payments to your current car. If we can get you a great deal *today*, wouldn't it be better to enjoy the new car now?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Commitment Close):** I can only promise today's deal. If I could lock in these incentives for you right now, would you feel comfortable taking the car home today, or is there still something else holding you back?
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 10: Specific Comparison (NEW) -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
+                    <p class="text-2xl italic text-red-600">"I'm going to look at Brand X next."</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Feature Comparison):** That's great! Brand X makes a good vehicle, but I want to make sure you know what you're losing: [Mention 2 unique features your brand has]. For you, are those features negotiable, or are they must-haves?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Close on Value):** I understand you need to compare. If you leave right now, you’re comparing this car to a hypothetical deal. Let’s do the paperwork and get a rock-solid price in writing. Now you have the best possible deal in your pocket when you compare the next car.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 11: Too Soon/Too Fast (NEW) -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
+                    <p class="text-2xl italic text-red-600">"I feel pressured; this is moving too fast."</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Apologize and Re-set):** I apologize; that was not my intention. We move quickly only when we feel we've found the perfect car for you. Let's slow down. On a scale of 1 to 10, how comfortable do you feel with the **car** itself?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Validate and Isolate):** You're right, this is a big decision. Let’s focus on the one thing making you feel rushed. Is it the price, the payment, or do you still have questions about the car?
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 12: Credit/Financing Objection (NEW) -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
+                    <p class="text-2xl italic text-red-600">"I want to secure my own financing first."</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Rate Guarantee):** That's smart. Our dealership works with over 20 lenders who are competing for your business, and we can often beat the rate your personal bank offers. If our rate is higher, you always have the option to use your outside financing. Fair enough?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Simplify Process):** I can definitely help you with that. We can secure all the paperwork, and once you get back with your final approval from your credit union, we'll swap the paperwork. You don't have to leave without the car today!
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 13: End of Month/Quarter (NEW) -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
+                    <p class="text-2xl italic text-red-600">"I'll come back at the end of the month for the best deal."</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Urgency and Inventory):** That's a common thought, but our **best incentive is this car right now**. If you leave today, this specific vehicle may be gone. If I give you our best end-of-month pricing today, would you take it home?
+                    </div>
+                    <div class="response-item">
+                        **Option B (The Price Is the Price):** I appreciate you trying to get the absolute best deal. What you're seeing on the paperwork is our final, transparent price—we can't offer you more at the end of the month, but we *can* promise the car will be here if you take it now.
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 11: Vehicle Doubt -->
-            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
-                <div class="card-front">
-                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
-                    <p class="text-2xl italic text-red-600">"I'm just not sure if this is the right vehicle."</p>
-                </div>
-                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
-                    <p class="text-xl font-bold text-green-600 mb-2">Response:</p>
-                    <p class="text-lg text-gray-700">It sounds like you like the vehicle, but maybe you're not in love with it. If this car had one more feature, what would it be? Or, on a scale of 1 to 10, with 10 being perfect, where does this car land? (Identifies the missing emotional or practical element.)</p>
-                </div>
-            </div>
-
-            <!-- Card 12: Waiting for a Deal -->
-            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
-                <div class="card-front">
-                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
-                    <p class="text-2xl italic text-red-600">"I want to wait for the next model year/next month's incentives."</p>
-                </div>
-                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
-                    <p class="text-xl font-bold text-green-600 mb-2">Response:</p>
-                    <p class="text-lg text-gray-700">That's a valid strategy, but waiting comes with a cost. If you wait, you risk losing this specific vehicle, and you're adding another month of payments to your current vehicle. If we can get you a great deal today, wouldn't it be better to enjoy the new car now?</p>
-                </div>
-            </div>
         </div>
     </main>
 
@@ -212,80 +297,18 @@
     </footer>
 
     <script>
-        // Global variables will be provided by the environment
-        const apiKey = "";
+        // NOTE: The Role-Play Simulator functionality is disabled due to external network blocks.
+        // The script below only handles the static flashcard toggles.
 
         function toggleResponse(cardElement) {
             const responseDiv = cardElement.querySelector('.card-back');
             responseDiv.classList.toggle('hidden');
         }
 
-        async function generateCustomerResponse() {
-            const input = document.getElementById('scenario-input').value.trim();
-            const outputDiv = document.getElementById('response-output');
-            const generatedText = document.getElementById('generated-text');
-            const loadingIndicator = document.getElementById('loading-indicator');
-            const generateBtn = document.getElementById('generate-btn');
-
-            if (!input) {
-                generatedText.innerHTML = 'Please describe a customer scenario to generate a response.';
-                outputDiv.classList.remove('hidden');
-                return;
-            }
-
-            // Show loading, disable button
-            loadingIndicator.classList.remove('hidden');
-            outputDiv.classList.add('hidden');
-            generateBtn.disabled = true;
-            generateBtn.textContent = 'Generating...';
-
-            const systemPrompt = "You are a realistic, professional, and slightly difficult car buyer at a dealership. Your goal is to give a short, challenging, but believable objection or request based on the provided scenario. Your response should be dialogue, as if you are speaking to the sales professional.";
-            const userQuery = "Scenario: " + input + "\n\nBased on this scenario, what is your direct dialogue response to the sales professional?";
-            
-            // FINAL FIX: Using the highly-compatible 'generateContent' endpoint without a specific model name, 
-            // relying on the environment to handle the routing and credentials.
-            // This is the most permissive way to run an API call from a public static host.
-            const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/generateContent";
-
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                config: {
-                    systemInstruction: {
-                        parts: [{ text: systemPrompt }]
-                    },
-                    temperature: 0.8 
-                }
-            };
-
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    const errorBody = await response.text();
-                    console.error("API Response Error:", errorBody);
-                    throw new Error(`API Request Failed: ${response.status}`);
-                }
-
-                const result = await response.json();
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Could not generate a response. Please try a different scenario.";
-                
-                generatedText.innerHTML = text.replace(/\n\n/g, '<br><br>');
-                outputDiv.classList.remove('hidden');
-
-            } catch (error) {
-                console.error("Gemini API Error:", error);
-                // A very clear final message for the user team
-                generatedText.textContent = "Simulation Failed: The network connection to the AI engine was blocked. This often occurs due to strict firewall settings or VPNs. The flashcards are working, but the Role-Play Simulator may be unusable from this location.";
-                outputDiv.classList.remove('hidden');
-            } finally {
-                loadingIndicator.classList.add('hidden');
-                generateBtn.disabled = false;
-                generateBtn.innerHTML = 'Generate Customer Response ✨';
-            }
+        // Dummy function to prevent errors from the disabled button
+        function generateCustomerResponse() {
+            // Functionality intentionally disabled due to network limitations.
+            return;
         }
     </script>
 </body>
