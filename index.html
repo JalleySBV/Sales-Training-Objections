@@ -249,7 +249,7 @@
             // FINAL FIX: We are removing the '?key=' + apiKey from the URL completely.
             // This forces the hosting platform (GitHub Pages, etc.) to securely inject the API key,
             // which often solves the browser security/CORS issue once and for all.
-            const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent";
+            const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 
             const payload = {
                 contents: [{ parts: [{ text: userQuery }] }],
@@ -293,3 +293,4 @@
     </script>
 </body>
 </html>
+
