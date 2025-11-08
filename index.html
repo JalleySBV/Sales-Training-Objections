@@ -213,14 +213,10 @@
 
     <script>
         // Global variables will be provided by the environment
-        // The API key is now intentionally left empty. The environment or hosting platform 
-        // will handle providing the necessary credentials for the fetch call.
         const apiKey = "";
 
         function toggleResponse(cardElement) {
             const responseDiv = cardElement.querySelector('.card-back');
-            // This is the static flashcard logic. If this doesn't work, 
-            // the main JavaScript block is failing due to a syntax error.
             responseDiv.classList.toggle('hidden');
         }
 
@@ -246,9 +242,7 @@
             const systemPrompt = "You are a realistic, professional, and slightly difficult car buyer at a dealership. Your goal is to give a short, challenging, but believable objection or request based on the provided scenario. Your response should be dialogue, as if you are speaking to the sales professional.";
             const userQuery = "Scenario: " + input + "\n\nBased on this scenario, what is your direct dialogue response to the sales professional?";
             
-            // FINAL FIX: We are removing the '?key=' + apiKey from the URL completely.
-            // This forces the hosting platform (GitHub Pages, etc.) to securely inject the API key,
-            // which often solves the browser security/CORS issue once and for all.
+            // FIX APPLIED: Using the stable model name 'gemini-2.5-flash' to bypass server-side preview model rejection.
             const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 
             const payload = {
@@ -269,19 +263,17 @@
                 if (!response.ok) {
                     const errorBody = await response.text();
                     console.error("API Response Error:", errorBody);
-                    // Use a generic error message since the user is hosted now.
                     throw new Error(`API Request Failed: ${response.status}`);
                 }
 
                 const result = await response.json();
                 const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Could not generate a response. Please try a different scenario.";
                 
-                generatedText.innerHTML = text.replace(/\n/g, '<br>');
+                generatedText.innerHTML = text.replace(/\n\n/g, '<br><br>'); // Better paragraph breaks
                 outputDiv.classList.remove('hidden');
 
             } catch (error) {
                 console.error("Gemini API Error:", error);
-                // Clear, concise error message for the sales team.
                 generatedText.textContent = "Simulation Failed. Please check your network connection or try a different scenario.";
                 outputDiv.classList.remove('hidden');
             } finally {
@@ -293,4 +285,3 @@
     </script>
 </body>
 </html>
-
