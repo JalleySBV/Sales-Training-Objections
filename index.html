@@ -244,7 +244,7 @@
             const systemPrompt = "You are a realistic, professional, and slightly difficult car buyer at a dealership. Your goal is to give a short, challenging, but believable objection or request based on the provided scenario. Your response should be dialogue, as if you are speaking to the sales professional.";
             const userQuery = "Scenario: " + input + "\n\nBased on this scenario, what is your direct dialogue response to the sales professional?";
             // Changed from template literal to standard string concatenation to prevent potential browser issues.
-            const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=" + apiKey;
+            const apiUrl = const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent"; + apiKey;
 
             const payload = {
                 contents: [{ parts: [{ text: userQuery }] }],
@@ -294,3 +294,4 @@
     </script>
 </body>
 </html>
+
