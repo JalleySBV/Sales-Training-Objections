@@ -64,6 +64,11 @@
 
         <div id="flashcard-container" class="space-y-6">
 
+            <!-- ==================================================================================== -->
+            <!-- STAGE 1: THE MEET & GREET (Initial Contact and Qualification) -->
+            <!-- ==================================================================================== -->
+            <h3 class="text-2xl font-bold text-gray-700 mt-8 mb-4 border-b-2 border-indigo-300 pb-1">Stage 1: The Meet & Greet</h3>
+
             <!-- Card 1: Initial Greeting -->
             <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
                 <div class="card-front">
@@ -98,22 +103,44 @@
                 </div>
             </div>
 
-            <!-- Card 3: Waiting for Authority -->
+            <!-- Card 14: Comparing Other Brands (NEW) -->
             <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
                 <div class="card-front">
                     <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
-                    <p class="text-2xl italic text-red-600">"I need to talk to my spouse/wife/partner."</p>
+                    <p class="text-2xl italic text-red-600">"This is our first stop, we need to go see other brands."</p>
                 </div>
                 <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
                     <span class="response-heading text-green-600">Response Options:</span>
                     <div class="response-item">
-                        **Option A (Anticipate Concerns):** That is 100% fair. If your spouse were here right now, what question do you think they would ask that I haven't answered yet about the car or the payment?
+                        **Option A (Acknowledge and Pivot):** That's great to hear! Actually, I hear that a lot—it seems like we're the first stop for almost everyone who walks in. Either we're the best dealership in town, or everyone is just incredibly lucky to find exactly what they want right away. Well, since you're here and it's the first stop, let's make sure we make the most of it. Why don't we start by taking a look at this model? Tell me, what are the top three things you're looking for in a new car?
                     </div>
                     <div class="response-item">
-                        **Option B (Trial Close):** I respect that. Since you love the car, let's complete the paperwork up to the decision point, and I'll even call them on speakerphone right now. If they say yes, you're all set!
+                        **Option B (Set the Standard):** That is the smartest way to shop! Since we are your first stop, let’s use this vehicle as the **benchmark**. We’ll get you the absolute best price we can offer in writing, so you know exactly what the competition needs to beat.
                     </div>
                 </div>
             </div>
+
+            <!-- Card 11: Too Soon/Too Fast -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
+                    <p class="text-2xl italic text-red-600">"I feel pressured; this is moving too fast."</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Apologize and Re-set):** I apologize; that was not my intention. We move quickly only when we feel we've found the perfect car for you. Let's slow down. On a scale of 1 to 10, how comfortable do you feel with the **car** itself?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Validate and Isolate):** You're right, this is a big decision. Let’s focus on the one thing making you feel rushed. Is it the price, the payment, or do you still have questions about the car?
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ==================================================================================== -->
+            <!-- STAGE 2: THE PRESENTATION & NEGOTIATION (Trade-in, Feature, Price Comparison) -->
+            <!-- ==================================================================================== -->
+            <h3 class="text-2xl font-bold text-gray-700 mt-8 mb-4 border-b-2 border-indigo-300 pb-1">Stage 2: Negotiation & Price Isolation</h3>
 
             <!-- Card 4: Price Resistance -->
             <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
@@ -166,6 +193,45 @@
                 </div>
             </div>
 
+            <!-- Card 10: Specific Comparison -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
+                    <p class="text-2xl italic text-red-600">"I'm going to look at Brand X next."</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Feature Comparison):** That's great! Brand X makes a good vehicle, but I want to make sure you know what you're losing: [Mention 2 unique features your brand has]. For you, are those features negotiable, or are they must-haves?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Close on Value):** I understand you need to compare. If you leave right now, you’re comparing this car to a hypothetical deal. Let’s do the paperwork and get a rock-solid price in writing. Now you have the best possible deal in your pocket when you compare the next car.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 12: Credit/Financing Objection -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
+                    <p class="text-2xl italic text-red-600">"I want to secure my own financing first."</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Rate Guarantee):** That's smart. Our dealership works with over 20 lenders who are competing for your business, and we can often beat the rate your personal bank offers. If our rate is higher, you always have the option to use your outside financing. Fair enough?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Simplify Process):** I can definitely help you with that. We can secure all the paperwork, and once you get back with your final approval from your credit union, we'll swap the paperwork. You don't have to leave without the car today!
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ==================================================================================== -->
+            <!-- STAGE 3: THE CLOSING STAGE (Commitment and Final Objections) -->
+            <!-- ==================================================================================== -->
+            <h3 class="text-2xl font-bold text-gray-700 mt-8 mb-4 border-b-2 border-indigo-300 pb-1">Stage 3: The Close & Commitment</h3>
+
             <!-- Card 7: Demanding Best Price -->
             <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
                 <div class="card-front">
@@ -203,6 +269,23 @@
                 </div>
             </div>
 
+            <!-- Card 3: Waiting for Authority (Moved here as it's a common final close objection) -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
+                    <p class="text-2xl italic text-red-600">"I need to talk to my spouse/wife/partner."</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Anticipate Concerns):** That is 100% fair. If your spouse were here right now, what question do you think they would ask that I haven't answered yet about the car or the payment?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Trial Close):** I respect that. Since you love the car, let's complete the paperwork up to the decision point, and I'll even call them on speakerphone right now. If they say yes, you're all set!
+                    </div>
+                </div>
+            </div>
+
             <!-- Card 9: Waiting for a Deal -->
             <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
                 <div class="card-front">
@@ -220,58 +303,7 @@
                 </div>
             </div>
             
-            <!-- Card 10: Specific Comparison (NEW) -->
-            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
-                <div class="card-front">
-                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
-                    <p class="text-2xl italic text-red-600">"I'm going to look at Brand X next."</p>
-                </div>
-                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
-                    <span class="response-heading text-green-600">Response Options:</span>
-                    <div class="response-item">
-                        **Option A (Feature Comparison):** That's great! Brand X makes a good vehicle, but I want to make sure you know what you're losing: [Mention 2 unique features your brand has]. For you, are those features negotiable, or are they must-haves?
-                    </div>
-                    <div class="response-item">
-                        **Option B (Close on Value):** I understand you need to compare. If you leave right now, you’re comparing this car to a hypothetical deal. Let’s do the paperwork and get a rock-solid price in writing. Now you have the best possible deal in your pocket when you compare the next car.
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Card 11: Too Soon/Too Fast (NEW) -->
-            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
-                <div class="card-front">
-                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
-                    <p class="text-2xl italic text-red-600">"I feel pressured; this is moving too fast."</p>
-                </div>
-                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
-                    <span class="response-heading text-green-600">Response Options:</span>
-                    <div class="response-item">
-                        **Option A (Apologize and Re-set):** I apologize; that was not my intention. We move quickly only when we feel we've found the perfect car for you. Let's slow down. On a scale of 1 to 10, how comfortable do you feel with the **car** itself?
-                    </div>
-                    <div class="response-item">
-                        **Option B (Validate and Isolate):** You're right, this is a big decision. Let’s focus on the one thing making you feel rushed. Is it the price, the payment, or do you still have questions about the car?
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Card 12: Credit/Financing Objection (NEW) -->
-            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
-                <div class="card-front">
-                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
-                    <p class="text-2xl italic text-red-600">"I want to secure my own financing first."</p>
-                </div>
-                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
-                    <span class="response-heading text-green-600">Response Options:</span>
-                    <div class="response-item">
-                        **Option A (Rate Guarantee):** That's smart. Our dealership works with over 20 lenders who are competing for your business, and we can often beat the rate your personal bank offers. If our rate is higher, you always have the option to use your outside financing. Fair enough?
-                    </div>
-                    <div class="response-item">
-                        **Option B (Simplify Process):** I can definitely help you with that. We can secure all the paperwork, and once you get back with your final approval from your credit union, we'll swap the paperwork. You don't have to leave without the car today!
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Card 13: End of Month/Quarter (NEW) -->
+            <!-- Card 13: End of Month/Quarter -->
             <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-blue-500 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-blue-400" onclick="toggleResponse(this)">
                 <div class="card-front">
                     <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
