@@ -63,9 +63,100 @@
         <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center border-b-2 pb-3">Master Objection Cards</h2>
 
         <div id="flashcard-container" class="space-y-6">
+            
+            <!-- ==================================================================================== -->
+            <!-- STAGE 0: THE PHONE CALL (Appointment Setting) -->
+            <!-- ==================================================================================== -->
+            <h3 class="text-2xl font-bold text-gray-700 mt-8 mb-4 border-b-2 border-green-400 pb-1">Stage 0: The Phone Call (Appointment Setting)</h3>
+
+            <!-- Card P1: Price Check -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-green-600 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-green-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
+                    <p class="text-2xl italic text-red-600">"What is your absolute best price/monthly payment right now?"</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Value & Inspection):** I'd love to give you a definitive price, but our best price is always based on three factors: the final inspection of your trade, your finance options, and the specific incentives available today. I can lock in the best price for you in just **20 minutes**. Are mornings or afternoons better for a quick stop?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Risk Reversal):** I completely understand you're shopping price. To make sure you're comparing apples-to-apples, come in for 15 minutes. If we don't get you a better deal than anyone else, I will personally fill your gas tank for the rest of your shopping trip. When can you stop by today?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card P2: Send Me The Info -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-green-600 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-green-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
+                    <p class="text-2xl italic text-red-600">"I'm too busy/Just send me the info via email."</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Urgency & Scarcity):** I can certainly send you the information, but the reason I called is because this specific model is extremely popular. I wouldn't want to email you a vehicle that's sold before you even get here. I have a 15-minute slot at 4:00 PM today or 10:00 AM tomorrow. Which one works best?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Confirm Commitment):** I respect your time! I'll send the email right now. Just so I know it's worth following up, if everything in that email is exactly what you are looking for, when is the very next time you'd be able to swing by to see it?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card P3: Call You Back -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-green-600 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-green-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
+                    <p class="text-2xl italic text-red-600">"I need to check with my spouse/I'll call you back."</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Schedule the Follow-Up):** That's perfect. Since you're ready to talk to them, let's schedule a time right now for when you're finished talking. I have slots available at 6 PM tonight or 10 AM tomorrow to review everything. Which works better for you to confirm the appointment?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Assume the Sale):** I understand. In case you can't reach them, let's secure a guaranteed time slot right now just in case. If you need to change it, no problem, but at least you have the spot locked in to see the car. Shall I pencil you in for tomorrow afternoon?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card P4: Availability Check (NEW) -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-green-600 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-green-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
+                    <p class="text-2xl italic text-red-600">"I'm only calling to confirm if the car is still available."</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Urgency & Control):** That's a great question! Yes, it's here right now, but we have multiple appointments scheduled to see it today. The only way to guarantee it's here for you is to set a firm appointment. I have a 10:00 AM slot or a 3:30 PM slot. Which is safer for you?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Assume the Sale):** I can confirm it's here right now. I'll pull it up front and hold the keys for you. What time are you planning to be here so I can make sure we are ready for the test drive?
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card P5: Credit Pre-Objection (UPDATED) -->
+            <div class="card-item bg-white p-6 rounded-xl card-shadow border-t-4 border-green-600 cursor-pointer transition duration-300 hover:shadow-lg hover:ring-2 hover:ring-green-400" onclick="toggleResponse(this)">
+                <div class="card-front">
+                    <p class="text-xl font-bold text-gray-900 mb-3">Objection:</p>
+                    <p class="text-2xl italic text-red-600">"My credit is really bad/I already know I won't qualify."</p>
+                </div>
+                <div class="card-back mt-5 pt-4 border-t border-gray-200 hidden response-content">
+                    <span class="response-heading text-green-600">Response Options:</span>
+                    <div class="response-item">
+                        **Option A (Leverage & Confidence):** I completely understand that concern. Here at the dealership, we work with over **30 different lenders**, not just the big banks, and we send them **millions of dollars of business** every year. Because of this volume, we have personal relationships and can often **call in favors** to do more for you than you could ever do on your own. The only way I can put our team to work for you is if you come in for 15 minutes. Can you be here by lunch or after work today?
+                    </div>
+                    <div class="response-item">
+                        **Option B (Focus on the Trade):** I hear you. Even if we're just working on your trade value for now, knowing that number is the first step. Can you come in so we can give you a firm, guaranteed trade value? We can talk credit later, but let's lock in your trade price today.
+                    </div>
+                </div>
+            </div>
 
             <!-- ==================================================================================== -->
             <!-- STAGE 1: THE MEET & GREET (Initial Contact and Qualification) -->
+            <!-- ... (The rest of the Stage 1 cards are here) ... -->
             <!-- ==================================================================================== -->
             <h3 class="text-2xl font-bold text-gray-700 mt-8 mb-4 border-b-2 border-indigo-300 pb-1">Stage 1: The Meet & Greet</h3>
 
@@ -159,6 +250,7 @@
             
             <!-- ==================================================================================== -->
             <!-- STAGE 2: THE PRESENTATION & NEGOTIATION (Trade-in, Feature, Price Comparison) -->
+            <!-- ... (The rest of the Stage 2 cards are here) ... -->
             <!-- ==================================================================================== -->
             <h3 class="text-2xl font-bold text-gray-700 mt-8 mb-4 border-b-2 border-indigo-300 pb-1">Stage 2: Negotiation & Price Isolation</h3>
 
@@ -249,6 +341,7 @@
             
             <!-- ==================================================================================== -->
             <!-- STAGE 3: THE CLOSING STAGE (Commitment and Final Objections) -->
+            <!-- ... (The rest of the Stage 3 cards are here) ... -->
             <!-- ==================================================================================== -->
             <h3 class="text-2xl font-bold text-gray-700 mt-8 mb-4 border-b-2 border-indigo-300 pb-1">Stage 3: The Close & Commitment</h3>
 
@@ -284,7 +377,7 @@
                         **Option B (Negative Reverse):** I understand. You wouldn't be leaving if you didn't have some concern. If you went home and the dealership called you tomorrow saying the car was sold, how would you feel? (Gauge emotional commitment.)
                     </div>
                     <div class="response-item">
-                        **Option C (Two Major Obstacles):** Most of our clients that need to think about it, it usually comes down to one of two things: either **the vehicle is not quite right** (it’s missing something you wish it had), or **it's about the money**. Which one is it for you?
+                        **Option C (Two Major Obstacles):** Most of our clients that need to think about it, it usually comes down to one of two things: either **the vehicle is not quite right** (it’s missing something you wish it had), or **it's about the money**. Which one is for you?
                     </div>
                 </div>
             </div>
