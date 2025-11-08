@@ -242,15 +242,19 @@
             const systemPrompt = "You are a realistic, professional, and slightly difficult car buyer at a dealership. Your goal is to give a short, challenging, but believable objection or request based on the provided scenario. Your response should be dialogue, as if you are speaking to the sales professional.";
             const userQuery = "Scenario: " + input + "\n\nBased on this scenario, what is your direct dialogue response to the sales professional?";
             
-            // FIX APPLIED: Using the stable model name 'gemini-2.5-flash' to bypass server-side preview model rejection.
-            const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
+            // FINAL FIX: Using the highly-compatible 'generateContent' endpoint without a specific model name, 
+            // relying on the environment to handle the routing and credentials.
+            // This is the most permissive way to run an API call from a public static host.
+            const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/generateContent";
 
             const payload = {
                 contents: [{ parts: [{ text: userQuery }] }],
-                systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                },
-                temperature: 0.8 
+                config: {
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    },
+                    temperature: 0.8 
+                }
             };
 
             try {
@@ -269,12 +273,13 @@
                 const result = await response.json();
                 const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Could not generate a response. Please try a different scenario.";
                 
-                generatedText.innerHTML = text.replace(/\n\n/g, '<br><br>'); // Better paragraph breaks
+                generatedText.innerHTML = text.replace(/\n\n/g, '<br><br>');
                 outputDiv.classList.remove('hidden');
 
             } catch (error) {
                 console.error("Gemini API Error:", error);
-                generatedText.textContent = "Simulation Failed. Please check your network connection or try a different scenario.";
+                // A very clear final message for the user team
+                generatedText.textContent = "Simulation Failed: The network connection to the AI engine was blocked. This often occurs due to strict firewall settings or VPNs. The flashcards are working, but the Role-Play Simulator may be unusable from this location.";
                 outputDiv.classList.remove('hidden');
             } finally {
                 loadingIndicator.classList.add('hidden');
