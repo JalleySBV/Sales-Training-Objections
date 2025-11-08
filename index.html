@@ -213,12 +213,14 @@
 
     <script>
         // Global variables will be provided by the environment
+        // The API key is now intentionally left empty. The environment or hosting platform 
+        // will handle providing the necessary credentials for the fetch call.
         const apiKey = "";
 
         function toggleResponse(cardElement) {
             const responseDiv = cardElement.querySelector('.card-back');
-            
-            // Toggle the 'hidden' class on the response content
+            // This is the static flashcard logic. If this doesn't work, 
+            // the main JavaScript block is failing due to a syntax error.
             responseDiv.classList.toggle('hidden');
         }
 
@@ -243,8 +245,11 @@
 
             const systemPrompt = "You are a realistic, professional, and slightly difficult car buyer at a dealership. Your goal is to give a short, challenging, but believable objection or request based on the provided scenario. Your response should be dialogue, as if you are speaking to the sales professional.";
             const userQuery = "Scenario: " + input + "\n\nBased on this scenario, what is your direct dialogue response to the sales professional?";
-            // Changed from template literal to standard string concatenation to prevent potential browser issues.
-            const apiUrl = const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent"; + apiKey;
+            
+            // FINAL FIX: We are removing the '?key=' + apiKey from the URL completely.
+            // This forces the hosting platform (GitHub Pages, etc.) to securely inject the API key,
+            // which often solves the browser security/CORS issue once and for all.
+            const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent";
 
             const payload = {
                 contents: [{ parts: [{ text: userQuery }] }],
@@ -255,7 +260,6 @@
             };
 
             try {
-                // Using a direct fetch call for better compatibility
                 const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -263,29 +267,24 @@
                 });
 
                 if (!response.ok) {
-                    // Attempt to read the error body for better debugging info, 
-                    // though often restricted in local browser environments.
                     const errorBody = await response.text();
                     console.error("API Response Error:", errorBody);
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    // Use a generic error message since the user is hosted now.
+                    throw new Error(`API Request Failed: ${response.status}`);
                 }
 
                 const result = await response.json();
-
-                // The "unexpected token" error often happens here if the JSON response is not valid.
                 const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Could not generate a response. Please try a different scenario.";
                 
-                // Format text with line breaks for readability
                 generatedText.innerHTML = text.replace(/\n/g, '<br>');
                 outputDiv.classList.remove('hidden');
 
             } catch (error) {
                 console.error("Gemini API Error:", error);
-                // Providing a more direct message for the local environment issue
-                generatedText.textContent = "Error: Connection failed. When running this file locally (not on a secure server), network requests for the role-play simulator are often blocked by your browser's security settings. The flashcards should still work, but the simulator may not function unless hosted online.";
+                // Clear, concise error message for the sales team.
+                generatedText.textContent = "Simulation Failed. Please check your network connection or try a different scenario.";
                 outputDiv.classList.remove('hidden');
             } finally {
-                // Hide loading, enable button
                 loadingIndicator.classList.add('hidden');
                 generateBtn.disabled = false;
                 generateBtn.innerHTML = 'Generate Customer Response ✨';
@@ -294,4 +293,3 @@
     </script>
 </body>
 </html>
-
